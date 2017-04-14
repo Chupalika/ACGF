@@ -10,7 +10,7 @@
 // Cloth Particles
 // =====================================================================================
 
-class ClothParticle {
+class SurfacePoint {
 public:
   // ACCESSORS
   const glm::vec3& getOriginalPosition() const{ return original_position; }
@@ -20,13 +20,14 @@ public:
   glm::vec3 getForce() const { return float(mass)*acceleration; }
   double getMass() const { return mass; }
   bool isFixed() const { return fixed; }
+  const std::vector<SurfacePoint*> getNeighbors() { return std::vector<SurfacePoint*>; }
   // MODIFIERS
   void setOriginalPosition(const glm::vec3 &p) { original_position = p; }
   void setPosition(const glm::vec3 &p) { position = p; }
   void setVelocity(const glm::vec3 &v) { velocity = v; }
   void setAcceleration(const glm::vec3 &a) { acceleration = a; }
   void setMass(double m) { mass = m; }
-  void setFixed(bool b) { fixed = b; }
+  void setFixed(bool b) { fixed = b; 
 private:
   // REPRESENTATION
   glm::vec3 original_position;
@@ -38,14 +39,14 @@ private:
 };
 
 // =====================================================================================
-// Cloth System
+// Mass-Spring Model
 // =====================================================================================
 
-class Cloth {
+class MSModel {
 
 public:
-  Cloth(ArgParser *args);
-  ~Cloth() { delete [] particles; cleanupVBOs(); }
+	MSModel(ArgParser *args);
+  ~MSModel() { delete [] surfacepoints; cleanupVBOs(); }
 
   // ACCESSORS
   const BoundingBox& getBoundingBox() const { return box; }
@@ -62,12 +63,8 @@ public:
 private:
 
   // PRIVATE ACCESSORS
-  const ClothParticle& getParticle(int i, int j) const {
-    assert (i >= 0 && i < nx && j >= 0 && j < ny);
-    return particles[i + j*nx]; }
-  ClothParticle& getParticle(int i, int j) {
-    assert (i >= 0 && i < nx && j >= 0 && j < ny);
-    return particles[i + j*nx]; }
+	//returns a vector of the surfae points that is neighboring this particle
+	const std::vector<SurfacePoint*> getNeighbors(SurfacePoint* s) { return 0; }
 
   glm::vec3 computeGouraudNormal(int i, int j) const;
 
@@ -79,22 +76,14 @@ private:
                             const glm::vec3 &anormal, const glm::vec3 &bnormal, const glm::vec3 &cnormal,
                             const glm::vec3 &abcolor, const glm::vec3 &bccolor, const glm::vec3 &cacolor);
 
-
   // REPRESENTATION
   ArgParser *args;
-  // grid data structure
-  int nx, ny;
-  ClothParticle *particles;
+  std::vector<SurfacePoint*> surfacepoints;
   BoundingBox box;
   // simulation parameters
   double damping;
   // spring constants
   double k_structural;
-  double k_shear;
-  double k_bend;
-  // correction thresholds
-  double provot_structural_correction;
-  double provot_shear_correction;
 
   // VBOs
   GLuint cloth_verts_VBO;

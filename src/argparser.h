@@ -55,9 +55,6 @@ public:
       if (argv[i] == std::string("-cloth")) {
         i++; assert (i < argc); 
         separatePathAndFile(argv[i],path,cloth_file);
-      } else if (argv[i] == std::string("-fluid")) {
-	i++; assert (i < argc); 	
-        separatePathAndFile(argv[i],path,fluid_file);
       } else if (argv[i] == std::string("-size")) {
         i++; assert (i < argc); 
 	width = height = atoi(argv[i]);
@@ -91,19 +88,14 @@ public:
     velocity = true;
     force = true;
 
-    face_velocity = 0;
-    dense_velocity = 0;
-
     surface = false;
-    isosurface = 0.7;
 
     wireframe = false;
     bounding_box = true;
-    cubes = false;
-    pressure = false;
 
     gravity = glm::vec3(0,-9.8,0);
 
+		gouraud = false;
     perspective = true;
   }
 
@@ -112,7 +104,6 @@ public:
   // all public! (no accessors)
 
   std::string cloth_file;
-  std::string fluid_file;
   std::string path;
   int width;
   int height;
@@ -133,13 +124,7 @@ public:
   bool force;
   bool wireframe;  
 
-  // used by fluid
-  int face_velocity;
-  int dense_velocity;
-  double isosurface;
-  bool cubes;
-  bool pressure;
-
+	bool gouraud;
   bool perspective;
 };
 

@@ -16,7 +16,6 @@
 
 class ArgParser;
 class Cloth;
-class Fluid;
 class Camera;
 
 // ====================================================================
@@ -30,7 +29,6 @@ public:
   // various static variables
   static ArgParser *args;
   static Cloth* cloth;
-  static Fluid* fluid;
   static BoundingBox bbox;
   static Camera* camera;
   static GLFWwindow* window;

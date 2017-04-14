@@ -1,7 +1,6 @@
 #include <cstdlib>
 #include "glCanvas.h"
 #include "cloth.h"
-#include "fluid.h"
 #include "argparser.h"
 #include "camera.h"
 
@@ -10,7 +9,6 @@
 
 ArgParser* GLCanvas::args = NULL;
 Cloth* GLCanvas::cloth = NULL;
-Fluid* GLCanvas::fluid = NULL;
 Camera* GLCanvas::camera = NULL;
 BoundingBox GLCanvas::bbox;
 GLFWwindow* GLCanvas::window = NULL;
@@ -49,7 +47,6 @@ void GLCanvas::initialize(ArgParser *_args) {
 
   args = _args;
   cloth = NULL;
-  fluid = NULL;
 
   glfwSetErrorCallback(error_callback);
 
@@ -130,21 +127,16 @@ void GLCanvas::initialize(ArgParser *_args) {
 void GLCanvas::Load(){
   delete cloth; 
   cloth = NULL;
-  delete fluid; 
-  fluid = NULL;
   if (args->cloth_file != "")
     cloth = new Cloth(args);
-  if (args->fluid_file != "")
-    fluid = new Fluid(args);
-  assert (cloth || fluid);
+	assert(cloth);
 }
 
 void GLCanvas::animate(){
   if (args->animate) {
     // do 10 steps of animation before rendering
     for (int i = 0; i < 10; i++) {
-      if (cloth) cloth->Animate();
-      if (fluid) fluid->Animate();
+      cloth->Animate();
     }
   }
   setupVBOs();
@@ -164,25 +156,14 @@ void GLCanvas::initializeVBOs(){
   GLCanvas::colormodeID = glGetUniformLocation(GLCanvas::programID, "colormode");
 
 
-  if (cloth) cloth->initializeVBOs();
-  if (fluid) fluid->initializeVBOs();
+  cloth->initializeVBOs();
   HandleGLError("leaving initilizeVBOs()");
 }
 
 void GLCanvas::setupVBOs(){
-  if (cloth != NULL) {
-    bbox.Set(cloth->getBoundingBox());
-    if (fluid != NULL) {
-      bbox.Extend(fluid->getBoundingBox());
-    }
-  } else {
-    assert (fluid != NULL);
-    bbox.Set(fluid->getBoundingBox()); 
-  }
-
+  bbox.Set(cloth->getBoundingBox());
   bbox.setupVBOs();
-  if (cloth) cloth->setupVBOs();
-  if (fluid) fluid->setupVBOs();
+  cloth->setupVBOs();
   HandleGLError("leaving setupVBOs()");
 }
 
@@ -220,14 +201,12 @@ void GLCanvas::drawVBOs(const glm::mat4 &ProjectionMatrix,const glm::mat4 &ViewM
   glUniform1i(GLCanvas::colormodeID, 0);
   HandleGLError("mid8 GlCanvas::drawVBOs()");
 
-  if (cloth) cloth->drawVBOs();
-  if (fluid) fluid->drawVBOs();
+	cloth->drawVBOs();
   HandleGLError("leaving GlCanvas::drawVBOs()");
 }
 
 void GLCanvas::cleanupVBOs(){
-  if (cloth) cloth->cleanupVBOs();
-  if (fluid) fluid->cleanupVBOs();
+  cloth->cleanupVBOs();
 }
 
 
@@ -330,8 +309,7 @@ void GLCanvas::keyboardCB(GLFWwindow* window, int key, int scancode, int action,
       break;
     case ' ':
       // a single step of animation
-      if (cloth) cloth->Animate();
-      if (fluid) fluid->Animate();
+			cloth->Animate();
       break; 
     case 'm':  case 'M': 
       args->particles = !args->particles;
@@ -342,27 +320,18 @@ void GLCanvas::keyboardCB(GLFWwindow* window, int key, int scancode, int action,
     case 'f':  case 'F': 
       args->force = !args->force;
       break; 
-    case 'e':  case 'E':   // "faces"/"edges"
-      args->face_velocity = !args->face_velocity;
-      break; 
-    case 'd':  case 'D': 
-      args->dense_velocity = (args->dense_velocity+1)%4;
-      break; 
     case 's':  case 'S': 
       args->surface = !args->surface;
       break; 
+		case 'g':  case 'G':
+			args->gouraud = !args->gouraud;
+			break;
     case 'w':  case 'W':
       args->wireframe = !args->wireframe;
       break;
     case 'b':  case 'B':
       args->bounding_box = !args->bounding_box;
       break;
-    case 'c':  case 'C': 
-      args->cubes = !args->cubes;
-      break; 
-    case 'p':  case 'P': 
-      args->pressure = !args->pressure;
-      break; 
     case 'r':  case 'R': 
       // reset system
       cleanupVBOs();

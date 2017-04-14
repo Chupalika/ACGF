@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\ipb\Dropbox\RPI\2017S\adv comp graphics\final\src\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ipb\Dropbox\RPI\2017S\adv comp graphics\final\src\utils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ipb\Dropbox\RPI\2017S\adv comp graphics\final\src\camera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ipb\Dropbox\RPI\2017S\adv comp graphics\final\src\glCanvas.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ipb\Dropbox\RPI\2017S\adv comp graphics\final\src\boundingbox.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ipb\Dropbox\RPI\2017S\adv comp graphics\final\src\cloth.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ipb\Dropbox\RPI\2017S\adv comp graphics\final\src\cloth_render.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ipb\Dropbox\RPI\2017S\adv comp graphics\final\src\fluid.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ipb\Dropbox\RPI\2017S\adv comp graphics\final\src\fluid_render.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ipb\Dropbox\RPI\2017S\adv comp graphics\final\src\marching_cubes.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\ipb\Dropbox\RPI\2017S\adv comp graphics\final\src\argparser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ipb\Dropbox\RPI\2017S\adv comp graphics\final\src\utils.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ipb\Dropbox\RPI\2017S\adv comp graphics\final\src\camera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ipb\Dropbox\RPI\2017S\adv comp graphics\final\src\glCanvas.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ipb\Dropbox\RPI\2017S\adv comp graphics\final\src\vbo_structs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ipb\Dropbox\RPI\2017S\adv comp graphics\final\src\boundingbox.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ipb\Dropbox\RPI\2017S\adv comp graphics\final\src\cloth.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ipb\Dropbox\RPI\2017S\adv comp graphics\final\src\fluid.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ipb\Dropbox\RPI\2017S\adv comp graphics\final\src\cell.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ipb\Dropbox\RPI\2017S\adv comp graphics\final\src\marching_cubes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\ipb\Dropbox\RPI\2017S\adv comp graphics\final\src\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{F76AA8A5-47B3-3229-9869-B84EEFC9DA6B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{BC43662A-9D1A-3869-AF4B-009D079F3A43}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

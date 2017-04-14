@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\ipb\Dropbox\RPI\2017S\adv comp graphics\final\build\CMakeFiles\1aaecd8626a4aec0050bff2e26e3c0ca\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{E4BF6EDD-4773-314D-BC0B-E2E7DAE17B79}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

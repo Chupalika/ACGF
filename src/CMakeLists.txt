@@ -24,6 +24,12 @@ add_executable(${my_executable}
   cloth.cpp
   cloth_render.cpp
   cell.h
+  edge.cpp
+  edge.h
+  hash.h
+  mesh.cpp
+  mesh.h
+  triangle.h
 )
 
 # http://glm.g-truc.net/0.9.5/updates.html

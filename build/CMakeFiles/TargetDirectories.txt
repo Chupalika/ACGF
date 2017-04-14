@@ -1,3 +1,0 @@
-C:/Users/ipb/Dropbox/RPI/2017S/adv comp graphics/final/build/CMakeFiles/simulation.dir
-C:/Users/ipb/Dropbox/RPI/2017S/adv comp graphics/final/build/CMakeFiles/ALL_BUILD.dir
-C:/Users/ipb/Dropbox/RPI/2017S/adv comp graphics/final/build/CMakeFiles/ZERO_CHECK.dir
